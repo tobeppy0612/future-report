@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LINE GPT Chat</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  </head>
+  <body>
+    <h1>こんにちは、LINEミニアプリ！</h1>
+    <input id="user-input" placeholder="メッセージを入力" />
+    <button onclick="sendMessage()">送信</button>
+    <pre id="response"></pre>
+
+    <script>
+      async function sendMessage() {
+        const input = document.getElementById("user-input").value;
+        const res = await fetch("https://YOUR_BACKEND/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: input }),
+        });
+        const data = await res.json();
+        document.getElementById("response").textContent = data.reply;
+      }
+
+      liff.init({ liffId: "あなたのLIFF ID" }).then(() => {
+        if (!liff.isLoggedIn()) liff.login();
+      });
+    </script>
+  </body>
+</html>
