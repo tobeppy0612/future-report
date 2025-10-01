@@ -13,8 +13,8 @@
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
-    const LIFF_ID = "YOUR_LIFF_ID"; // ← 手順2で控えた値
-    const TYPEFORM_URL = "https://form.typeform.com/to/ABC123"; // ← あなたのフォームURL
+    const LIFF_ID = "2008216335-7GaOQbLn"; //
+    const TYPEFORM_URL = "https://form.typeform.com/to/p5iN6F6W#line_user_id=xxxxx"; // 
 
     (async () => {
       await liff.init({ liffId: LIFF_ID });
@@ -23,8 +23,8 @@
       const profile = await liff.getProfile(); // { userId, displayName, ... }
       const url = TYPEFORM_URL + "?line_user_id=" + encodeURIComponent(profile.userId);
 
-      // LINE内 or 外部ブラウザ、どちらでもOK
-      liff.openWindow({ url, external: true });
+      //
+      liff.openWindow({ url, external: false });;
     })();
   </script>
 </body>
